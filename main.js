@@ -27,7 +27,6 @@ function setUpMap() {
   const visParams = {
     min: 0,
     max: 3000,
-    bands: ['red', 'green', 'blue'],
     gamma: [0.95, 1.1, 1]
   };
   
