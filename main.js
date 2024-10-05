@@ -30,11 +30,13 @@ function setUpMap() {
     palette: ['blue', 'white', 'green']
   };
   
-  // Get the map ID for the image
-  recentImage.getMap(visParams, (mapId) => {
-    const tileSource = new ee.layers.EarthEngineTileSource(mapId);
+  // Get the map ID for the image and handle the response
+  recentImage.getMap(visParams, (mapIdDict) => {
+    const tileSource = new ee.layers.EarthEngineTileSource(mapIdDict.mapid);
     const overlay = new ee.layers.ImageOverlay(tileSource);
     embeddedMap.overlayMapTypes.push(overlay);
+  }, (error) => {
+    console.error('Error fetching map ID:', error);
   });
 /*
     // Create a new tile source to fetch visible tiles on demand and display them
@@ -55,18 +57,10 @@ function onSignInButtonClick() {
 // If the user is signed in, display a popup requesting permissions needed to
 // run the app, otherwise show the sign-in button.
 ee.data.authenticateViaOauth(
-  // The OAuth Client ID defined above.
   '425766528478-pg98n80vsbhka2lbadhtchoho2u7ji8v.apps.googleusercontent.com',
-  // Callback invoked immediately when user is already signed in.
   setUpMap,
-  // Show authentication errors in a popup.
   alert,
-  // Request permission to only read and compute Earth Engine data on behalf of
-  // user.
-  /* extraScopes = */ ['https://www.googleapis.com/auth/earthengine.readonly'],
-  // Show sign-in button if reusing existing credentials fails.
+  ['https://www.googleapis.com/auth/earthengine.readonly'],
   () => document.getElementById("g-sign-in").removeAttribute("hidden"),
-  // Don't require ability to write and access Cloud Platform on behalf of the
-  // user.
-  /* opt_suppressDefaultScopes = */ true
+  true
 );
