@@ -15,17 +15,34 @@ function setUpMap() {
     zoom: 9,
   });
 
-  // Obtain reference to digital elevation model and apply algorithm to
-  // calculate slope.
-  const srtm = ee.Image("MODIS/061/MOD16A2GF");
-  const slope = ee.Terrain.slope(srtm);
-
-  // Create a new tile source to fetch visible tiles on demand and display them
+  // Get the MODIS ImageCollection
+  const imageCollection = ee.ImageCollection("MODIS/061/MOD16A2GF");
+  // Select an image from the collection (e.g., the most recent image)
+  const recentImage = imageCollection
+    .filterDate('2024-01-01', '2024-12-31')  // Adjust the date range as needed
+    .sort('system:time_start', false)         // Sort by time, descending
+    .first();                                 // Get the first image
+  
+  // Set visualization parameters
+  const visParams = {
+    min: 0,
+    max: 3000,
+    palette: ['blue', 'white', 'green']
+  };
+  
+  // Get the map ID for the image
+  recentImage.getMap(visParams, (mapId) => {
+    const tileSource = new ee.layers.EarthEngineTileSource(mapId);
+    const overlay = new ee.layers.ImageOverlay(tileSource);
+    embeddedMap.overlayMapTypes.push(overlay);
+  });
+/*
+    // Create a new tile source to fetch visible tiles on demand and display them
   // on the map.
   const mapId = slope.getMap({min: 0, max: 60});
   const tileSource = new ee.layers.EarthEngineTileSource(mapId);
   const overlay = new ee.layers.ImageOverlay(tileSource);
-  embeddedMap.overlayMapTypes.push(overlay);
+  embeddedMap.overlayMapTypes.push(overlay);*/
 }
 
 // Handles clicks on the sign-in button.
