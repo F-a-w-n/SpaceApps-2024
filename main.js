@@ -19,7 +19,7 @@ function setUpMap() {
   const imageCollection = ee.ImageCollection("MODIS/061/MOD16A2GF");
   // Select an image from the collection (e.g., the most recent image)
   const recentImage = imageCollection
-    .filterDate('2020-01-01', '2024-12-31')  // Adjust the date range as needed
+    .filterDate('2018-01-01', '2024-12-31')  // Adjust the date range as needed
     .sort('system:time_start', false)         // Sort by time, descending
     .first();                                 // Get the first image
   
@@ -27,7 +27,7 @@ function setUpMap() {
   const visParams = {
     min: 0,
     max: 3000,
-    palette: ['blue', 'white', 'green']
+    //palette: ['blue', 'white', 'green']
   };
   
   // Get the map ID for the image and handle the response
