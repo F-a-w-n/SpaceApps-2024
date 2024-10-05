@@ -3,13 +3,24 @@
   <head>
     <title>Simple Marker</title>
     <!-- The callback parameter is required, so we use console.debug as a noop -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtBN1udtTS62R_hQ7418A9u3e-uUtzerg&callback=console.debug&libraries=maps,marker&v=beta">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtBN1udtTS62R_hQ7418A9u3e-uUtzerg&callback=initMap&v=weekly">
     </script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script src="./ee_api_js.js"></script>
+    <script src="./private-key.js"></script>
+    <script src="./main.js"></script>
     <link rel="stylesheet" href="./style.css"/>
   </head>
   <body>
-    <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="DEMO_MAP_ID">
-      <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="My location"></gmp-advanced-marker>
-    </gmp-map>
+    <input
+      id="g-sign-in"
+      type="image"
+      src="https://developers.google.com/identity/images/btn_google_signin_light_normal_web.png"
+      onclick="onSignInButtonClick()"
+      alt="Sign in with Google"
+      hidden
+    />
+    <div id="map"> 
+      </div>
   </body>
 </html>
