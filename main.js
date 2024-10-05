@@ -32,10 +32,10 @@ function setUpMap() {
   
   // Get the map ID for the image and handle the response
   recentImage.getMap(visParams, (mapIdDict) => {
-    console.log(mapIdDict);
     const tileSource = new ee.layers.EarthEngineTileSource(mapIdDict.mapid);
     const overlay = new ee.layers.ImageOverlay(tileSource);
     embeddedMap.overlayMapTypes.push(overlay);
+    console.log(mapIdDict);
   });
 /*
     // Create a new tile source to fetch visible tiles on demand and display them
