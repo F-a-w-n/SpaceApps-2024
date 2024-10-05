@@ -27,7 +27,8 @@ function setUpMap() {
   const visParams = {
     min: 0,
     max: 3000,
-    //palette: ['blue', 'white', 'green']
+    bands: ['red', 'green', 'blue'],
+    gamma: [0.95, 1.1, 1]
   };
   
   // Get the map ID for the image and handle the response
