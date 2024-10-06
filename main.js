@@ -1,4 +1,5 @@
 let embeddedMap;
+let geocoder;
 let currentOverlay;
 let latlng = {lng: -83, lat: 42};
 
@@ -16,6 +17,7 @@ let soilcategory = 0;
 // 0-2
 let soiltier = -1;
 let moisttier = -1;
+let country;
 
 function init() {
   soilImage = ee.Image('OpenLandMap/SOL/SOL_TEXTURE-CLASS_USDA-TT_M/v02');
@@ -126,13 +128,27 @@ function setUpMap() {
   });
   showEvaporation();
 
+  geocoder = new google.maps.Geocoder();
+
   embeddedMap.addListener("click", (mapsMouseEvent) => {
-    latlng = mapsMouseEvent.latLng.toJSON()
+    latlng = mapsMouseEvent.latLng.toJSON();
+    geocode(latlng);
     updateChart();
   });
 
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
+}
+
+function geocode(latlng) {
+  geocoder
+    .geocode({location: latlng})
+    .then((result) => {
+      country = result.results[result.results.length-1].formatted_address;
+    })
+    .catch((e) => {
+      alert("Geocode was not successful for the following reason: " + e);
+    });
 }
 
 function updateChart() {
@@ -293,6 +309,8 @@ evap: 0-35 bad 36-69 mid 70+ good
 evap * moisture^2: 0-2 bad 2.1-6.5 mid 6.6+ good
 
 */
+
+ //https://maps.googleapis.com/maps/api/geocode/json?address=Washington&bounds=36.47,-84.72%7C43.39,-65.90&key=YOUR_API_KEY
 
   let moistureIndex = evapArray[evapArray.length-1][1] * moistArray[moistArray.length-1][1] * moistArray[moistArray.length-1][1];
   if (moistureIndex > 6.5) {
