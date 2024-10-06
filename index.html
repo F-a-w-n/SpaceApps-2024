@@ -5,7 +5,7 @@
     <!-- The callback parameter is required, so we use console.debug as a noop -->
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtBN1udtTS62R_hQ7418A9u3e-uUtzerg&callback=initMap&v=weekly">
     </script>
-    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./ee_api_js.js"></script>
     <script src="./main.js"></script>
     <link rel="stylesheet" href="./style.css"/>
@@ -19,7 +19,9 @@
       alt="Sign in with Google"
       hidden
     />
-    <div id="map"> 
-      </div>
+    <div id="map">
+    </div>
+    <div id="evap_chart"></div> 
+    <div id="moist_chart"></div> 
   </body>
 </html>
