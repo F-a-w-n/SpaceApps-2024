@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<style>
+
+    .table-of-content {
+        width: 50%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    .table-of-content th,
+    .table-ofs-content td {
+        border: 1px solid #7baadb;
+        padding: 8px;
+        text-align: left;
+    }
+
+    /* Centering the image */
+    .center-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        max-width: 600px;
+    }
+
+    footer {
+        position: fixed; /* Changed to fixed */
+        text-align: center; /* Centers the text */
+        padding: 20px; /* Adds space around the footer content */
+        color: #fff;
+        bottom: 0; /* Aligns it to the bottom */
+        width: 100%; /* Makes sure the footer spans the full width */
+        background-color: #7799bc; /* Set a background color to the footer for better visibility */
+    }
+
+    .signup-form {
+        max-width: 600px; /* Increased max-width */
+        margin: 40px auto;
+        background-color: #fff;
+        padding: 20px 40px 20px 20px; /* Added extra padding to the right */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .signup-form h2 {
+        text-align: center;
+        color: #7799bc;
+    }
+
+    .signup-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #52391e;
+    }
+
+    .signup-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .signup-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #7799bc;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .signup-form button:hover {
+        background-color: #6a89a1;
+    }
+
+    /* Centering the paragraph text */
+    .center-text {
+        text-align: center; /* Center the text */
+        margin: 20px 0; /* Add margin for spacing */
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> 
+
+    <link rel="shortcut icon" href="https://scontent-yyz1-1.cdninstagram.com/v/t1.15752-9/461312701_1075168230192042_8546555038297102686_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=botpkY91TDYQ7kNvgHwK9al&_nc_ht=scontent-yyz1-1.cdninstagram.com&_nc_gid=A7vRxDebAoiVsaVukbUdxO2&oh=03_Q7cD1QFQVPEjkvSwRNUr-VBpLYhsl520uyEAjeiIrH4hqOWc0g&oe=672A4469" type="image/x-icon">
+    <title>Curated Crops</title>
+</head>
+
+<body>
+
+    <nav>
+        <!-- Navigation -->
+        <a href="index.html">Home</a>
+        <a href="information.html">Information</a>
+        <a href="map.html">Map</a> 
+        <a href="signup.html">Sign Up</a>
+    </nav>
+
+    <!-- Header -->
+    <h1>Sign Up Page</h1>
+
+    <div class="signup-form">
+        <p class="center-text">Sign up to receive monthly tips to improve your curated crops specially customized for you!</p>
+        <form action="">
+           <input type="text" name="fullname" placeholder="Your full name" required> 
+           <input type="text" name="username" placeholder="Your username" required> 
+           <input type="password" name="password" placeholder="Your password" required> 
+           <input type="password" name="confirm_password" placeholder="Confirm password" required> 
+           <input type="submit" onclick="alert('Thank you for signing up, you will hear back from us in a month!')" value="Sign Up"> 
+        </form>  
+    </div>
+
+    <footer>
+        © 2024 Curated Crops. All Rights Reserved.
+    </footer>
+    
+</body>
+</html>
