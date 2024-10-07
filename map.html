@@ -90,20 +90,43 @@
         .file-upload-button:hover {
             background-color: #5a92a0; /* Darker shade on hover */
         }
+
+        /* Centering the button container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0; /* Space above and below */
+        }
     </style>
 
-    <!-- Google Maps JavaScript API -->
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtBN1udtTS62R_hQ7418A9u3e-uUtzerg&libraries=places&callback=initMap&v=weekly"></script>
-    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     
-    <!-- Your own JavaScript files -->
     <script src="./ee_api_js.js"></script>
-    <script src="./map.js"></script> <!-- Link to your custom JavaScript file -->
+    <script src="./map.js"></script> 
     
+  <body>
     <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
+    
+    <input
+      id="g-sign-in"
+      type="image"
+      src="https://developers.google.com/identity/images/btn_google_signin_light_normal_web.png"
+      onclick="onSignInButtonClick()"
+      alt="Sign in with Google"
+      hidden
+    />
+    <input
+      id="pac-input"
+      class="controls"
+      type="text"
+      placeholder="Search Box"
+    />
+    <div id="evap_chart"></div> 
+    <div id="moist_chart"></div> 
     <hr>
     <nav>
         <a href="index.html">Home</a>
@@ -115,12 +138,7 @@
     <h1>Maps</h1>
     <p style="text-align: center;">Enter a location within Canada, the United States, or Mexico.</p>
 
-    <ul id="savedLocationsList"></ul>
-    <input id="locationInput" type="text" placeholder="Enter your location">
-    <button id="currentLocationBtn" aria-label="Use my current location">Use My Location</button>
-    <button id="saveLocationBtn">Save My Location</button>
-    <button id="loadLocationsBtn">Show Saved Locations</button>
-
+  
     <input id="g-sign-in" type="image" src="https://developers.google.com/identity/images/btn_google_signin_light_normal_web.png" onclick="onSignInButtonClick()" alt="Sign in with Google" hidden />
     <div id="map"></div>
 
@@ -146,16 +164,7 @@
     </footer>
 
     <script>
-        // Example error handling for the save location button
-        document.getElementById('saveLocationBtn').onclick = function() {
-            const location = document.getElementById('locationInput').value;
-            if (!location) {
-                alert('Please enter a valid location.');
-            } else {
-                // Save the location logic here
-                console.log('Saving location:', location);
-            }
-        };
+        
     </script>
 </body>
 
