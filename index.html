@@ -1,15 +1,116 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Simple Marker</title>
-    <!-- The callback parameter is required, so we use console.debug as a noop -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtBN1udtTS62R_hQ7418A9u3e-uUtzerg&callback=console.debug&libraries=maps,marker&v=beta">
-    </script>
-    <link rel="stylesheet" href="./style.css"/>
-  </head>
-  <body>
-    <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="DEMO_MAP_ID">
-      <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="My location"></gmp-advanced-marker>
-    </gmp-map>
-  </body>
+
+<head>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS file -->
+
+    <!-- the meta is to make it scale well -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="https://scontent-yyz1-1.cdninstagram.com/v/t1.15752-9/461312701_1075168230192042_8546555038297102686_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=botpkY91TDYQ7kNvgHwK9al&_nc_ht=scontent-yyz1-1.cdninstagram.com&_nc_gid=A7vRxDebAoiVsaVukbUdxO2&oh=03_Q7cD1QFQVPEjkvSwRNUr-VBpLYhsl520uyEAjeiIrH4hqOWc0g&oe=672A4469" type="image/x-icon">
+    <title>Curated Crops</title>
+
+    <style>
+
+        .center-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 30px;
+            /* Move image closer to the top */
+        }
+
+        .center-content {
+            text-align: center;
+            margin: 20px;
+        }
+        /* Container to position text over the image */
+        .image-container {
+            position: relative;
+            display: inline-block;
+            width: 700px;           
+            height: 500px;
+            margin:0px;
+            padding:0px;          
+        }
+
+        /* Image styling */
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+        /* text on img */
+        .overlay-text {
+            position: relative;
+            bottom: 10%;
+            left: 16%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <!-- Navigation -->
+        <a href="index.html">Home</a>
+        <a href="information.html">Information</a>
+        <a href="map.html">Map</a> 
+        <a href="signup.html">Sign Up</a>
+    </nav>
+
+    <h1 style="color: rgb(189, 120, 16);">Welcome to Curated Crops!</h1>
+
+    <!-- Image -->
+     <div> 
+    <img src="https://lh3.googleusercontent.com/proxy/qFHk1jx_MPv_bszWTXptrXT1tyy18-9P5T5H344uCxZh9l5pQcIiiYDYSIcSqzvuQuvN4ZMiqo3g7N2U_bLJCcDZyA"
+        alt="Description of my image" class="center-image">    
+
+    <!-- Content -->
+    <div class="center-content">
+
+        <h1>Our Mission:</h1>
+        <p>Our website hopes to empower the Canadian, American , and Mexican agricultural communities to easily explore, analyze, and 
+            utilize NASA’s satellite and geospatial datasets to address the issues correlated with how soil quality, soil moisture, & 
+            evaporation affect crop growth
+        </p>
+
+        <h1>How?</h1>  
+        <p>Based on the location entered, our website will analyze & generate a tier list that ranks which crops produce the most harvest
+           regarding soil quality, soil moisture, & evaporation of the farming area selected
+        </p>
+        
+        <h1>Why?</h1>  
+        <p>Our curated crops will improve farming practices to optimize production & manage resources efficiently as soil quality, soil 
+           moisture, & evaporation collectively contribute to the vulnerability of agricultural communities by impacting crop health, 
+           profitability, food security, & overall sustainability
+        </p>
+
+        <h1>Getting Started:</h1>  
+    <div class="image-container">
+        <a href="information.html" target="_blank">
+                <img src="https://www.discoveringbelgium.com/wp-content/uploads/2022/03/farm-crops.jpg">
+                <div class="overlay-text">Information -></div>
+            </a>
+            <a href="map.html" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/A_large_blank_world_map_with_oceans_marked_in_blue.PNG/640px-A_large_blank_world_map_with_oceans_marked_in_blue.PNG" alt="Clickable Image" width="300">
+                <div class="overlay-text">Maps -></div>
+            </a>
+            <a href="signup.html" target="_blank">
+                <img src="https://cals.ncsu.edu/agricultural-institute/wp-content/uploads/sites/37/2020/11/realtime-water-management.jpg" alt="Clickable Image" width="300">
+                <div class="overlay-text">Sign up -></div>
+            </a>
+    </div>
+
+    <footer>
+        © 2024 Curated Crops. All Rights Reserved.
+    </footer>
+</body>
 </html>

@@ -1,13 +1,234 @@
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-        gmp-map {
-        height: 100%;
-      }
+/* General Styles for All Pages */
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+body {
+    font-family: 'Arvo';
+    background-color: #d2e3f0;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color:#54350d;
+}
+
+/* Navbar */
+nav {
+    text-align: center;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #7baadb;
+    padding: 10px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #54350d;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin: 0 10px;
+    font-family: 'Rock Salt', cursive;
+    line-height: 1.6;
+}
+
+nav a:hover {
+    color: #3b8ad7;
+}
+
+/* Header */
+h1 {
+    font-family: 'Yellowtail';
+    text-align: center;
+    margin-top: 80px;
+    color: #664624;
+}
+
+.full-width-image {
+    width: 100%;
+    height: auto;
+}
+
+.image-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.image-container {
+    position: relative;
+    text-align: center;
+}
+
+/* Image Styling */
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Main Content */
+.center-content {
+    text-align: center;
+    margin: 20px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #7baadb;
+    margin-left: 5px;
+}
+
+/* Table Styling */
+.table-of-content {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table-of-content th, .table-of-content td {
+    border: 1px solid #7baadb;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    bottom: 0;
+    width: 100%;
+    background-color: #7799bc;
+    z-index: 1000;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Cloud and Rain Animation (Specific to Map Page) */
+.container {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    margin-top: -250px;
+    margin-left: -250px;
+}
+
+#cloud {
+    width: 175px;
+    height: 60px;
+    background: #f2f9fe;
+    position: relative;
+    margin: 120px auto 20px;
+    border-radius: 50px;
+    animation: mover 3.5s infinite alternate;
+}
+
+#cloud:after, #cloud:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    background: #f2f9fe;
+}
+
+#cloud:after {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    top: -25px;
+    left: 25px;
+}
+
+#cloud:before {
+    width: 90px;
+    height: 90px;
+    border-radius: 100px;
+    top: -45px;
+    right: 25px;
+}
+
+.shadow {
+    width: 175px;
+    position: absolute;
+    bottom: -80px;
+    background: black;
+    z-index: -1;
+    border-radius: 50%;
+    box-shadow: 0px 0px 25px 8px rgba(0, 0, 0, 0.4);
+}
+
+.rain .drop {
+    position: absolute;
+    background: linear-gradient(#000000, #ffffff);
+    opacity: 0.7;
+    top: 0;
+    border-radius: 50%;
+    animation: fall .75s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        margin-top: 150px;
+        opacity: 0;
+    }
+}
+
+@keyframes mover {
+    0% {
+        transform: translateY(1rem);
+    }
+    100% {
+        transform: translateY(2.6rem);
+    }
+}
+
+/* Button Styling for Map Page */
+#map-buttons button {
+    display: block;
+    width: 200px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #7799bc;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#map-buttons button:hover {
+    background-color: #5a799d;
+}
+
+/* Page Specific Styles (if necessary) */
+.page-specific {
+    margin: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+

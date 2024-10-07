@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://scontent-yyz1-1.cdninstagram.com/v/t1.15752-9/461312701_1075168230192042_8546555038297102686_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=botpkY91TDYQ7kNvgHwK9al&_nc_ht=scontent-yyz1-1.cdninstagram.com&_nc_gid=A7vRxDebAoiVsaVukbUdxO2&oh=03_Q7cD1QFQVPEjkvSwRNUr-VBpLYhsl520uyEAjeiIrH4hqOWc0g&oe=672A4469" type="image/x-icon">
+    <title>Curated Crops</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d2e3f0;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin-top: -10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            padding: 10px 15px;
+            margin: 0 10px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        #map {
+            height: 400px;
+            width: 80%;
+            margin: 0 auto;
+            border: 2px solid #347690; /* Example border */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        #locationInput,
+        #currentLocationBtn,
+        #saveLocationBtn,
+        #loadLocationsBtn {
+            width: 300px;
+            margin: 10px auto;
+            display: block;
+        }
+
+        #savedLocationsList {
+            text-align: center;
+            margin: 20px auto;
+            color: #333;
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            color: red;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .upload-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .file-upload-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #347690; /* Green background */
+            color: white; /* White text */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer on hover */
+            text-align: center; /* Center text */
+            font-size: 16px; /* Font size */
+        }
+
+        .file-upload-button:hover {
+            background-color: #5a92a0; /* Darker shade on hover */
+        }
+    </style>
+
+    <!-- Google Maps JavaScript API -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtBN1udtTS62R_hQ7418A9u3e-uUtzerg&libraries=places&callback=initMap&v=weekly"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    
+    <!-- Your own JavaScript files -->
+    <script src="./ee_api_js.js"></script>
+    <script src="./map.js"></script> <!-- Link to your custom JavaScript file -->
+    
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <hr>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="information.html">Information</a>
+        <a href="map.html">Map</a>
+        <a href="signup.html">Sign Up</a>
+    </nav>
+    <hr>
+    <h1>Maps</h1>
+    <p style="text-align: center;">Enter a location within Canada, the United States, or Mexico.</p>
+
+    <ul id="savedLocationsList"></ul>
+    <input id="locationInput" type="text" placeholder="Enter your location">
+    <button id="currentLocationBtn" aria-label="Use my current location">Use My Location</button>
+    <button id="saveLocationBtn">Save My Location</button>
+    <button id="loadLocationsBtn">Show Saved Locations</button>
+
+    <input id="g-sign-in" type="image" src="https://developers.google.com/identity/images/btn_google_signin_light_normal_web.png" onclick="onSignInButtonClick()" alt="Sign in with Google" hidden />
+    <div id="map"></div>
+
+    <div class="button-container">
+        <button onclick="changeMap(0)" id="showSoilBtn">Show Soil</button>
+        <button onclick="changeMap(1)" id="showMoistureBtn">Show Moisture</button>
+        <button onclick="changeMap(2)" id="showEvaporationBtn">Show Evaporation</button>
+    </div>
+
+    <p style="text-align: center;">Here are some crops that will provide you with a good harvest based on your location!</p>
+    <div class="upload-container">
+        <form id="uploadForm">
+            <label for="fileUpload" class="file-upload-button">
+                Upload File
+            </label>
+            <input type="file" id="fileUpload" name="fileUpload" style="display: none;" />
+        </form>
+    </div>
+
+    <hr>
+    <footer>
+        © 2024 Curated Crops. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Example error handling for the save location button
+        document.getElementById('saveLocationBtn').onclick = function() {
+            const location = document.getElementById('locationInput').value;
+            if (!location) {
+                alert('Please enter a valid location.');
+            } else {
+                // Save the location logic here
+                console.log('Saving location:', location);
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="https://scontent-yyz1-1.cdninstagram.com/v/t1.15752-9/461312701_1075168230192042_8546555038297102686_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=botpkY91TDYQ7kNvgHwK9al&_nc_ht=scontent-yyz1-1.cdninstagram.com&_nc_gid=A7vRxDebAoiVsaVukbUdxO2&oh=03_Q7cD1QFQVPEjkvSwRNUr-VBpLYhsl520uyEAjeiIrH4hqOWc0g&oe=672A4469" type="image/x-icon">
+    <title>Curated Crops</title>
+
+    <style>
+        /* Existing CSS */
+        
+
+        nav a:hover {
+            color: #cce5ff;/* Change color on hover */
+        }
+        
+        .center-content {
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 40px; /* Add space below this content */
+    opacity: 0; /* Start hidden for fade-in effect */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+}
+
+
+
+
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #7baadb;
+            margin-left: 5px;
+        }
+
+        .table-of-content {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .table-of-content th,
+        .table-of-content td {
+            border: 1px solid #7baadb;
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Centering the image */
+        .center-image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            max-width: 50;
+            margin-top: 20px;
+            /* Move image closer to the top */
+        }
+        /* Cloud and Rain CSS */
+        body {
+            background-color: #d2e3f0;
+        }
+        .center-content-info {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center the items horizontally */
+    text-align: left; /* Keep text left-aligned */
+    width: 100%; /* Full width of the parent */
+    max-width: 800px; /* Adjust this value as needed */
+    margin: 20px auto; /* Center with auto margins on left and right */
+    margin-bottom: 40px; /* Add space below this content */
+    opacity: 0; /* Start hidden for fade-in effect */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+}
+
+
+
+        .container {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 30%; /* Adjusted to 25% */
+            left: 15%; /* Moved further left */
+            margin-top: -250px;
+            margin-left: -250px;
+        }
+
+        #cloud {
+            width: 175px;
+            height: 60px;
+            background: #f2f9fe;
+            position: relative;
+            margin: 120px auto 20px;
+            border-radius: 50px;
+            animation: mover 3.5s infinite alternate;
+        }
+
+        #cloud:after,
+        div#cloud:before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            background: #f2f9fe;
+        }
+
+        #cloud:after {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            top: -25px;
+            left: 25px;
+        }
+
+        #cloud:before {
+            width: 90px;
+            height: 90px;
+            border-radius: 100px;
+            top: -45px;
+            right: 25px;
+        }
+
+        .shadow {
+            width: 175px;
+            position: absolute;
+            bottom: -80px;
+            background: black;
+            z-index: -1;
+            border-radius: 50%;
+            box-shadow: 0px 0px 25px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .rain {
+            position: absolute;
+            height: 80%;
+            width: 100%;
+            color: #002266;
+        }
+
+        .drop {
+            position: absolute;
+            background: linear-gradient(#000000, #ffffff);
+            opacity: 0.7; /* Change opacity for visibility */
+            top: 0; /* Start from the top */
+            border-radius: 50%; /* Make drops circular */
+        }
+
+        /* Rain drops classes */
+        .d1 { left: 97%; width: 1%; height: 5%; animation: fall .94s linear 0.69s infinite; }
+        .d2 { left: 18%; width: 1%; height: 5%; animation: fall .98s linear 0.57s infinite; }
+        .d3 { left: 38%; width: 1%; height: 5%; animation: fall .66s linear .60s infinite; }
+        .d4 { left: 64%; width: 1%; height: 5%; animation: fall .69s linear .76s infinite; }
+        .d5 { left: 95%; width: 1%; height: 5%; animation: fall .75s linear 0.56s infinite; }
+        .d6 { left: 65%; width: 1%; height: 5%; animation: fall .75s linear .92s infinite; }
+        .d7 { left: 19%; width: 1%; height: 5%; animation: fall .92s linear .72s infinite; }
+        .d8 { left: 55%; width: 1%; height: 5%; animation: fall .84s linear .99s infinite; }
+        .d9 { left: 35%; width: 1%; height: 5%; animation: fall .79s linear .53s infinite; }
+        .d10 { left: 83%; width: 1%; height: 5%; animation: fall .82s linear .97s infinite; }
+        .d11 { left: 8%; width: 1%; height: 5%; animation: fall .75s linear 0.56s infinite; }
+        .d12 { left: 1%; width: 1%; height: 5%; animation: fall .60s linear .59s infinite; }
+        .d13 { left: 13%; width: 1%; height: 5%; animation: fall .5s linear .5s infinite; }
+        .d14 { left: 13%; width: 1%; height: 5%; animation: fall .80s linear .63s infinite; }
+        .d15 { left: 13%; width: 1%; height: 5%; animation: fall .68s linear .75s infinite; }
+
+        @keyframes fall {
+            to { margin-top: 150px; opacity: 0; }
+        }
+
+        @keyframes mover {
+            0% { transform: translateY(1rem); }
+            100% { transform: translateY(2.6rem); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <hr>
+    <nav>
+        <!-- Navigation -->
+        <a href="index.html">Home</a>
+        <a href="information.html">Information</a>
+        <a href="map.html">Map</a> 
+        <a href="signup.html">Sign Up</a>
+    </nav>
+    <hr>
+
+    <!-- Cloud and Rain Animation -->
+    <div class="container">
+        <div id="cloud">
+            <span class="shadow"></span>
+            <div class="rain">
+                <div class="drop d1"></div>
+                <div class="drop d2"></div>
+                <div class="drop d3"></div>
+                <div class="drop d4"></div>
+                <div class="drop d5"></div>
+                <div class="drop d6"></div>
+                <div class="drop d7"></div>
+                <div class="drop d8"></div>
+                <div class="drop d9"></div>
+                <div class="drop d10"></div>
+                <div class="drop d11"></div>
+                <div class="drop d12"></div>
+                <div class="drop d13"></div>
+                <div class="drop d14"></div>
+                <div class="drop d15"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="center-content-info">
+       <br> <h1 style="color: rgb(82, 73, 54);">How To Use The Crop Health Monitoring Tool</h1></br>
+        <p>"Welcome to Curated Crops! Our website empowers you to make informed decisions about crop selection based on your
+            local soil conditions. By using NASA’s satellite data, you can explore, analyze, and utilize vital information about
+            soil health, moisture levels, and nutrient composition. Follow these simple steps to optimize your farming practices
+            and enhance your crop yield."</p>
+
+         <p>Step 1: Enter Your Location
+             Once on the homepage, locate the input field where you can enter your geographic location. You can either type in your
+            latitude and longitude coordinates or use the interactive map to select your location.</p>
+        
+        <p>Step 2: Submit Your Location
+            After entering your location, click the “Submit” button. This action sends your location data to the system for
+            analysis, retrieving important soil information specific to your area</p>
+        
+        <p>Step 3: View Your Soil Data
+            The website will process your location and display key soil metrics such as moisture levels, soil composition, and
+            nutrient availability. This information is crucial for understanding the health of your soil.</p>
+
+        <p>Step 4: Check the Crop Tier List
+            Next, the site generates a tier list of recommended crops that are well-suited for your soil conditions. Each crop is
+            categorized into tiers (e.g., Tier 1: Excellent, Tier 2: Good), helping you easily identify the best options.</p>
+        
+        <p>Step 5: Read Explanations
+            Click on each crop in the tier list to access detailed explanations. You’ll learn why certain crops are recommended
+            based on their requirements and how they perform in your specific soil type.</p>
+        
+        <p>Step 6: Explore Additional Resources
+            Take advantage of the resources section to find best practices for farming based on your soil analysis. Here, you can
+            discover tips and strategies to enhance your farming techniques.</p>
+        <p>Step 7: Stay Informed
+            Keep checking back for updates on new features and datasets. We’re continually enhancing the website to provide you
+            with the best possible tools for successful farming.
+        
+            By following these easy steps, you can leverage the power of Curated Crops to improve your farming practices and
+            increase your crop yield!</p>
+        <a href="path/to/your/file.ext" download="filename.ext" class="download-button">Download File</a>
+
+                
+                <img src="https://agriculture.basf.us/content/dam/cxm/agriculture/crop-protection/us-crop/images/Crops-Header2.png"
+                    alt="Description of my image" class="center-image">
+            
+
+
+
+    </div>
+
+
+    <footer>
+        © 2024 Curated Crops. All Rights Reserved.
+    </footer>
+
+    <script> 
+        document.addEventListener("DOMContentLoaded", function () {
+            const footer = document.querySelector('footer');
+            window.addEventListener("scroll", function () {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                let clientHeight = document.documentElement.clientHeight;
+    
+                if (scrollTop + clientHeight >= document.documentElement.scrollHeight) {
+                    footer.style.bottom = '0'; // Slide up the footer
+                } else {
+                    footer.style.bottom = '-100px'; // Slide down the footer
+                }
+            });
+        });
+    </script>
+</body>
+</html>
