@@ -126,6 +126,7 @@ function setUpMap() {
     center: latlng,
     zoom: 9,
   });
+  initAutocomplete();
   showEvaporation();
 
   geocoder = new google.maps.Geocoder();
@@ -138,6 +139,61 @@ function setUpMap() {
 
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
+}
+
+function initAutocomplete() {
+  const input = document.getElementById("pac-input");
+  const searchBox = new google.maps.places.SearchBox(input);
+
+  embeddedMap.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // Bias the SearchBox results towards current map's viewport.
+  embeddedMap.addListener("bounds_changed", () => {
+    searchBox.setBounds(embeddedMap.getBounds());
+  });
+
+  let markers = [];
+
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener("places_changed", () => {
+    const places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    const bounds = new google.maps.LatLngBounds();
+
+    places.forEach((place) => {
+      if (!place.geometry || !place.geometry.location) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      // Create a marker for each place.
+      markers.push(
+        new google.maps.Marker({
+          embeddedMap,
+          title: place.name,
+          position: place.geometry.location,
+        }),
+      );
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    embeddedMap.fitBounds(bounds);
+  });
 }
 
 function geocode(latlng) {
@@ -356,3 +412,5 @@ ee.data.authenticateViaOauth(
   () => console.log("Sign-in successful"),
   true
 );
+
+window.initAutocomplete = initAutocomplete;

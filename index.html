@@ -2,8 +2,7 @@
 <html>
   <head>
     <title>Simple Marker</title>
-    <!-- The callback parameter is required, so we use console.debug as a noop -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtBN1udtTS62R_hQ7418A9u3e-uUtzerg&callback=initMap&v=weekly">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtBN1udtTS62R_hQ7418A9u3e-uUtzerg&libraries=places&callback=initMap&v=weekly">
     </script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./ee_api_js.js"></script>
@@ -18,6 +17,12 @@
       onclick="onSignInButtonClick()"
       alt="Sign in with Google"
       hidden
+    />
+    <input
+      id="pac-input"
+      class="controls"
+      type="text"
+      placeholder="Search Box"
     />
     <div id="map">
     </div>
